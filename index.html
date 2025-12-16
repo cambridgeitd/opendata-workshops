@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City of Cambridge Open Data Workshops</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --cambridge-navy: #003660;
+            --cambridge-sky: #77a5d5;
+            --cambridge-gold: #c99200;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: "Source Sans Pro", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            background: #f6f7fb;
+            color: #1f2a36;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        main {
+            width: min(960px, 100%);
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 45px rgba(0, 54, 96, 0.15);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(120deg, var(--cambridge-navy), var(--cambridge-sky));
+            color: #fff;
+            padding: 2.5rem 3rem;
+        }
+        header p {
+            opacity: 0.85;
+            margin-top: 0.5rem;
+        }
+        section {
+            padding: 2rem 3rem 3rem;
+        }
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 54, 96, 0.08);
+            color: var(--cambridge-navy);
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        ul {
+            list-style: none;
+            display: grid;
+            gap: 1rem;
+        }
+        li {
+            border-left: 4px solid var(--cambridge-navy);
+            padding-left: 1rem;
+        }
+        li span {
+            display: block;
+            font-size: 0.9rem;
+            color: #516272;
+            margin-top: 0.25rem;
+        }
+        footer {
+            padding-top: 2rem;
+            font-size: 0.85rem;
+            color: #5c6b7a;
+        }
+        a.cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: var(--cambridge-gold);
+            color: #111;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 0.75rem 1.4rem;
+            border-radius: 999px;
+            margin-top: 1.5rem;
+            transition: transform 200ms ease, box-shadow 200ms ease;
+        }
+        a.cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(201, 146, 0, 0.35);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="pill">City of Cambridge, MA · Data Services</div>
+            <h1>Open Data Workshops</h1>
+            <p>Resources, slides, and follow-ups from trainings delivered by the City of Cambridge Open Data Program.</p>
+            <a class="cta" href="#workshops">Browse years →</a>
+        </header>
+        <section id="workshops">
+            <h2>Workshop Archive</h2>
+            <p>Materials are organized chronologically. Choose a year to see agendas, datasets, and reference files.</p>
+            <ul>
+                <li>
+                    <strong>2025</strong>
+                    <span>Upcoming sessions · Materials will be posted after each workshop.</span>
+                </li>
+            </ul>
+            <footer>
+                Questions? Contact the Cambridge Analytics &amp; Insights team at <a href="mailto:opendata@cambridgema.gov">opendata@cambridgema.gov</a>.
+            </footer>
+        </section>
+    </main>
+</body>
+</html>
