@@ -41,6 +41,24 @@ header.hero {
 header.hero.hero--compact {
     padding: 2.2rem 3rem;
 }
+header.hero .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--paper);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    margin-bottom: 1.1rem;
+    transition: background 200ms ease, transform 200ms ease;
+}
+header.hero .back-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
 header.hero p {
     opacity: 0.9;
     margin-top: 0.6rem;
