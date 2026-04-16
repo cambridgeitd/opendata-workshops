@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apr 14, 2026 Open Data Workshop Resources</title>
+    <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body class="workshop-detail">
+    <main>
+        <header class="hero hero--compact">
+            <a class="back-link" href="../../index.html">Back to workshop archive</a>
+            <div class="pill">City of Cambridge, MA · Open Data Program</div>
+            <h1>Apr 14, 2026 · Open Data Workshop (Cambridge Public Library)</h1>
+            <p>Materials and examples shared during the in-person Cambridge Public Library workshop.</p>
+        </header>
+        <section>
+            <h2>Workshop Materials</h2>
+            <ul class="resource-list">
+                <li>
+                    <a href="open-data-portal-public-training-2026-04-14-cpl.pdf">Class Slides (PDF)</a>
+                    <small>Slide deck used during the April 2026 Cambridge Public Library workshop.</small>
+                </li>
+
+                <li>
+                    <a href="https://chatgpt.com/share/69e111e4-75c0-83ea-8694-c0e723acf946">Cambridge Crime Trends Analysis in ChatGPT</a>
+                    <small>Shared ChatGPT conversation discussed during the workshop.</small>
+                </li>
+                <li>
+                    <a href="cambridge-311-explorer/">Cambridge 311 Explorer</a>
+                    <small>Local workshop snapshot of the interactive explorer demonstrated in class, copied here to preserve the version used that day. Snapshot source: brainheart/cambridge-311-explorer at commit f829495.</small>
+                </li>
+            </ul>
+
+            <div class="prompt-card">
+                <h3>Claude Code Prompt for the Cambridge 311 Explorer</h3>
+                <p>The Cambridge 311 explorer was produced from a single prompt in Claude Code.</p>
+                <pre>Please create a graphical Cambridge 311 explorer that contains both a map, a timeline and charts and lets you set various filter criteria. You should be able to color code different types of feature. By default it should show previous 30 days of data, but you can drag the timeline around to show whatever the selected range is. It should be delightfully easy to move the time window around. As the timeline and filter criteria move around, the map and charts change accordingly. There should be a pinpoint mode on the map showing individual records, or an area mode showing densities by census blocks or cambridge neighborhoods. There should be a button to animate the timeline, which will then do a slowmo crawl over the data through time, updating the maps and filters accordingly. You should be able to set the speed of playback. You can find the data here -- grab it all up front with a "loading data" indicator so that subsequent interactions are zippy. Eventually it will be GH pages site, but for now let's just do it locally
+
+https://data.cambridgema.gov/Public-Works/Commonwealth-Connect-Service-Requests/2z9k-mv9g/about_data</pre>
+            </div>
+
+            <footer>
+                Questions? Email <a href="mailto:opendata@cambridgema.gov">opendata@cambridgema.gov</a>.
+            </footer>
+        </section>
+    </main>
+</body>
+</html>

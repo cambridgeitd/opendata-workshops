@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cambridge 311 Explorer</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- Loading overlay -->
+<div id="loader">
+  <div class="loader-box">
+    <div class="loader-title">Loading Cambridge 311 data…</div>
+    <div class="loader-bar"><div id="loader-fill"></div></div>
+    <div class="loader-status" id="loader-status">Fetching records…</div>
+  </div>
+</div>
+
+<header id="topbar">
+  <div class="brand">
+    <span class="dot"></span>
+    <span class="title">Cambridge 311 Explorer</span>
+    <span class="sub" id="record-count"></span>
+  </div>
+  <div class="controls">
+    <div class="seg" id="mode-toggle">
+      <button data-mode="pin" class="active">Pinpoints</button>
+      <button data-mode="area">Neighborhoods</button>
+    </div>
+    <div class="range-label" id="range-label">—</div>
+  </div>
+</header>
+
+<main id="layout">
+  <!-- Filters -->
+  <aside id="filters">
+    <div class="panel-head">
+      <span>Filters</span>
+      <button id="clear-filters" class="link">Reset</button>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <span>Issue Type</span>
+        <div>
+          <button class="link" id="types-all">All</button>
+          <button class="link" id="types-none">None</button>
+        </div>
+      </div>
+      <div class="search-wrap">
+        <input type="search" id="type-search" placeholder="Search types…" />
+      </div>
+      <div id="type-list" class="type-list"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><span>Status</span></div>
+      <div id="status-list" class="status-list"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><span>Neighborhood</span></div>
+      <select id="nhood-select" multiple size="7"></select>
+      <div class="hint">Cmd/Ctrl-click for multi-select. Empty = all.</div>
+    </div>
+  </aside>
+
+  <!-- Map -->
+  <section id="map-wrap">
+    <div id="map"></div>
+    <div id="map-legend"></div>
+    <div id="map-stats"></div>
+  </section>
+
+  <!-- Charts -->
+  <aside id="charts">
+    <div class="chart-section">
+      <div class="chart-title">Top issue types in window</div>
+      <canvas id="chart-types" width="360" height="240"></canvas>
+    </div>
+    <div class="chart-section">
+      <div class="chart-title">Daily volume in window</div>
+      <canvas id="chart-daily" width="360" height="140"></canvas>
+    </div>
+    <div class="chart-section">
+      <div class="chart-title">Status breakdown</div>
+      <canvas id="chart-status" width="360" height="100"></canvas>
+    </div>
+  </aside>
+</main>
+
+<!-- Timeline -->
+<footer id="timeline-wrap">
+  <div class="tl-left">
+    <button id="play-btn" title="Play / pause animation">▶</button>
+    <div class="speed">
+      <label>Speed</label>
+      <select id="speed">
+        <option value="1">1× (1 day / 400 ms)</option>
+        <option value="3" selected>3× (1 day / 140 ms)</option>
+        <option value="7">7× (1 wk / 300 ms)</option>
+        <option value="14">14× (2 wk / 300 ms)</option>
+        <option value="30">30× (1 mo / 300 ms)</option>
+      </select>
+    </div>
+    <div class="window-size">
+      <label>Window</label>
+      <select id="window-preset">
+        <option value="7">7 days</option>
+        <option value="30">30 days</option>
+        <option value="90" selected>90 days</option>
+        <option value="180">6 months</option>
+        <option value="365">1 year</option>
+      </select>
+    </div>
+  </div>
+  <div class="tl-right">
+    <svg id="timeline" width="100%" height="110"></svg>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="app.js"></script>
+</body>
+</html>

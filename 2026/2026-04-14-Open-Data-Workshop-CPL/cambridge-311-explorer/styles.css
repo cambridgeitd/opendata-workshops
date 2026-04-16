@@ -1,0 +1,101 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #222; background: #f5f6f8; }
+body { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+/* Loading overlay */
+#loader {
+  position: fixed; inset: 0; background: rgba(250,251,253,0.97);
+  display: flex; align-items: center; justify-content: center; z-index: 9999;
+}
+#loader.hidden { display: none; }
+.loader-box { width: 360px; text-align: center; }
+.loader-title { font-size: 16px; font-weight: 600; margin-bottom: 12px; }
+.loader-bar { width: 100%; height: 8px; background: #e4e7ec; border-radius: 4px; overflow: hidden; }
+#loader-fill { height: 100%; width: 0%; background: linear-gradient(90deg,#1e6dd1,#3c95f0); transition: width 200ms; }
+.loader-status { margin-top: 10px; font-size: 12px; color: #667085; }
+
+/* Topbar */
+#topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 16px; background: #ffffff; border-bottom: 1px solid #e6e8ec;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03); z-index: 10;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand .dot { width: 10px; height: 10px; border-radius: 50%; background: #1e6dd1; }
+.brand .title { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+.brand .sub { color: #667085; font-size: 12px; }
+.controls { display: flex; gap: 14px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid #dfe3e8; border-radius: 8px; overflow: hidden; background: #fff; }
+.seg button { border: 0; background: transparent; padding: 6px 12px; cursor: pointer; font-size: 13px; color: #475467; }
+.seg button.active { background: #1e6dd1; color: #fff; }
+.range-label { font-size: 13px; color: #344054; padding: 6px 10px; background: #f2f4f7; border-radius: 6px; font-variant-numeric: tabular-nums; min-width: 260px; text-align: center; }
+
+/* Main layout */
+#layout { flex: 1 1 auto; display: grid; grid-template-columns: 260px 1fr 380px; min-height: 0; }
+#filters, #charts { background: #fff; border-right: 1px solid #e6e8ec; overflow-y: auto; padding: 12px; }
+#charts { border-right: 0; border-left: 1px solid #e6e8ec; }
+#map-wrap { position: relative; min-height: 0; min-width: 0; }
+#map { position: absolute; inset: 0; }
+#map-legend {
+  position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.95);
+  border: 1px solid #e6e8ec; border-radius: 8px; padding: 8px 10px; font-size: 12px; max-height: 260px; overflow-y: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06); z-index: 500; min-width: 170px;
+}
+#map-legend .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+#map-legend .row { display: flex; align-items: center; margin: 2px 0; }
+#map-legend .row .lbl { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#map-legend .row .cnt { color: #667085; margin-left: 8px; font-variant-numeric: tabular-nums; }
+#map-stats {
+  position: absolute; left: 12px; bottom: 12px; background: rgba(255,255,255,0.95);
+  border: 1px solid #e6e8ec; border-radius: 8px; padding: 6px 10px; font-size: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06); z-index: 500;
+}
+
+/* Filters */
+.panel-head { display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 13px; margin-bottom: 6px; color: #101828; }
+.section { border-top: 1px solid #eef0f3; padding: 10px 0; }
+.section-head { display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 600; color: #475467; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+.search-wrap { margin-bottom: 6px; }
+.search-wrap input { width: 100%; padding: 5px 8px; border: 1px solid #dfe3e8; border-radius: 6px; font-size: 12px; }
+.type-list, .status-list { max-height: 300px; overflow-y: auto; }
+.type-list .row, .status-list .row { display: flex; align-items: center; padding: 3px 2px; font-size: 12px; cursor: pointer; border-radius: 4px; }
+.type-list .row:hover, .status-list .row:hover { background: #f4f6fa; }
+.type-list .row input, .status-list .row input { margin-right: 6px; }
+.type-list .swatch { width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+.type-list .lbl { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.type-list .cnt { color: #98a2b3; margin-left: 4px; font-variant-numeric: tabular-nums; font-size: 11px; }
+#nhood-select { width: 100%; font-size: 12px; padding: 4px; border-radius: 6px; border: 1px solid #dfe3e8; }
+.hint { font-size: 11px; color: #98a2b3; margin-top: 4px; }
+.link { background: none; border: 0; color: #1e6dd1; cursor: pointer; font-size: 11px; padding: 2px 4px; }
+.link:hover { text-decoration: underline; }
+
+/* Charts */
+.chart-section { margin-bottom: 18px; }
+.chart-title { font-size: 12px; color: #475467; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+canvas { display: block; width: 100%; height: auto; }
+
+/* Timeline */
+#timeline-wrap { display: flex; align-items: center; gap: 16px; padding: 8px 16px; background: #fff; border-top: 1px solid #e6e8ec; }
+.tl-left { display: flex; gap: 12px; align-items: center; flex-shrink: 0; }
+.tl-left label { font-size: 11px; color: #667085; margin-right: 4px; }
+.tl-left select { font-size: 12px; padding: 3px 6px; border-radius: 6px; border: 1px solid #dfe3e8; background: #fff; }
+#play-btn { width: 34px; height: 34px; border-radius: 50%; border: 0; background: #1e6dd1; color: #fff; font-size: 14px; cursor: pointer; }
+#play-btn:hover { background: #1757ab; }
+#play-btn.playing { background: #ef4444; }
+.tl-right { flex: 1 1 auto; min-width: 0; }
+#timeline { display: block; width: 100%; user-select: none; }
+
+/* Timeline internals */
+.tl-bar { fill: #c8d3e1; }
+.tl-bar-sel { fill: #1e6dd1; }
+.tl-window { fill: rgba(30,109,209,0.14); stroke: #1e6dd1; stroke-width: 1; cursor: grab; }
+.tl-window.grabbing { cursor: grabbing; }
+.tl-handle { fill: #1e6dd1; cursor: ew-resize; }
+.tl-axis { font-size: 10px; fill: #667085; }
+.tl-axis line { stroke: #e6e8ec; }
+
+/* Leaflet tweak */
+.leaflet-container { background: #e7ecf2; font: 12px -apple-system, sans-serif; }
+.leaflet-tooltip.pin-tip {
+  font-size: 11px; padding: 4px 6px; background: #fff; border-radius: 4px; border: 1px solid #dfe3e8;
+}

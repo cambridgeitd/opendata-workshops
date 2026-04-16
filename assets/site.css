@@ -139,6 +139,28 @@ ul.resource-list small {
     color: var(--slate);
     margin-top: 0.35rem;
 }
+.prompt-card {
+    margin-top: 1.25rem;
+    padding: 1.25rem;
+    border-radius: 16px;
+    background: var(--mist);
+    border: 1px solid rgba(0, 54, 96, 0.12);
+}
+.prompt-card h3 {
+    margin-bottom: 0.75rem;
+    color: var(--cambridge-navy);
+}
+.prompt-card p + p {
+    margin-top: 0.8rem;
+}
+.prompt-card pre {
+    margin-top: 0.9rem;
+    white-space: pre-wrap;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--ink);
+}
 footer {
     padding-top: 2rem;
     font-size: 0.85rem;
@@ -163,6 +185,7 @@ a.cta:hover {
 }
 body.workshop-detail main {
     width: min(820px, 100%);
+}
 @media (max-width: 640px) {
     body {
         padding: 1.5rem;
