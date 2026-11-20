@@ -153,6 +153,13 @@ ul.resource-list small {
 .prompt-card p + p {
     margin-top: 0.8rem;
 }
+.prompt-card h4 {
+    margin-top: 1.5rem;
+    font-weight: 700;
+}
+.prompt-card h4 + pre {
+    margin-top: 0.4rem;
+}
 .prompt-card pre {
     margin-top: 0.9rem;
     white-space: pre-wrap;
