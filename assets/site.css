@@ -156,6 +156,7 @@ ul.resource-list small {
 .prompt-card pre {
     margin-top: 0.9rem;
     white-space: pre-wrap;
+    overflow-wrap: anywhere;
     font-family: "Consolas", "Courier New", monospace;
     font-size: 0.9rem;
     line-height: 1.45;
